@@ -24,6 +24,6 @@ namespace student_details.Models
             return $"Student[name: {Name}]";
         }
 
-        // TODO: Develop this (add constructor, properties, etc.)
+      
     }
 }
