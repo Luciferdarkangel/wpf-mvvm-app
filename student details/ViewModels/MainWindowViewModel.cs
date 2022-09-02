@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,7 +11,11 @@ namespace student_details.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Student> Students { get; } = new();
+        public ObservableCollection<Student> Students { get; } = new(
+            Enumerable.Range(1, 10)
+                .Select((n) => new Student($"Student {n}", $"student{n}@example.com", $"#{n}"))
+        );
+
 
         public MainWindowViewModel()
         {
