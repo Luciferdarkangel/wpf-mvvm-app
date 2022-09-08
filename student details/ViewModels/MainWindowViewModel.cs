@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -25,6 +26,26 @@ namespace student_details.ViewModels
         public SaveCommand SaveCmd { get; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private Student? _SelectedStudent = null;
+
+        public Student? SelectedStudent
+        {
+            get { return _SelectedStudent; }
+            set
+            {
+                _SelectedStudent = value;
+                Debug.WriteLine("Setter of SelectedStudent invoked");
+
+                if (_SelectedStudent != null)
+                {
+                    StudentName = _SelectedStudent.Name;
+                    StudentEmail = _SelectedStudent.Email;
+                    ContactNumber = _SelectedStudent.ContactNumber;
+
+                }
+            }
+        }
 
         private string _StudentName = String.Empty;
         public string StudentName

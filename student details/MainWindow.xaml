@@ -13,7 +13,7 @@
     </Window.DataContext>
 
     <Grid Margin="0,10,0,0">
-        
+
         <Label Content="Student Name" HorizontalAlignment="Left" Margin="81,78,0,0" VerticalAlignment="Top"/>
 
         <TextBox HorizontalAlignment="Left" Margin="264,82,0,0" TextWrapping="Wrap" Text="{Binding StudentName}" VerticalAlignment="Top" Width="120" />
@@ -38,6 +38,7 @@
 
         <ListView  d:ItemsSource="{d:SampleData ItemCount=5}" 
                    ItemsSource="{Binding Students}"
+                   SelectedItem="{Binding SelectedStudent}"
                    Margin="432,235,93,49">
             <ListView.View>
                 <GridView>
