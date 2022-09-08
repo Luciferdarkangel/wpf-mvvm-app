@@ -15,9 +15,9 @@ namespace student_details.Models
             Email = email;
         }
 
-        public string Name { get; }
-        public string ContactNumber { get; }
-        public string Email { get; }
+        public string Name { get; set; }
+        public string ContactNumber { get; set; }
+        public string Email { get; set; }
 
         public override string ToString()
         {

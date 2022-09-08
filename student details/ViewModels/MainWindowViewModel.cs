@@ -95,13 +95,28 @@ namespace student_details.ViewModels
 
         public void Execute(object? parameter)
         {
-            // Create a Student object from the view model properties.
-            var student = new Student(vm.StudentName, vm.ContactNumber, vm.StudentEmail);
+            if (vm.SelectedStudent != null)
+            {
+                var student = vm.SelectedStudent;
 
-            // Store a list of student models somewhere in the ViewModel.
-            vm.Students.Add(student);   
+                student.Name = vm.StudentName ;
+                student.ContactNumber = vm.ContactNumber;
+                student.Email = vm.StudentEmail;
 
-            MessageBox.Show($"Done saving, {student}");
+                var index = vm.Students.IndexOf(student);
+                vm.Students.RemoveAt(index);
+                vm.Students.Insert(index, student);
+            }
+            else
+            {
+                // Create a Student object from the view model properties.
+                var student = new Student(vm.StudentName, vm.ContactNumber, vm.StudentEmail);
+
+                // Store a list of student models somewhere in the ViewModel.
+                vm.Students.Add(student);
+
+                MessageBox.Show($"Done saving, {student}");
+            }
         }
     }
 }
